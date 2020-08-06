@@ -1,0 +1,40 @@
+''' FlatLand Space Station Competitive '''
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the flatlandSpaceStations function below.
+def flatlandSpaceStations(n, c):
+    max_d=0
+    c.sort()
+    if n==len(c):
+        return 0
+    if m==1:
+        return max(c[0],n-c[-1]-1)
+    else:
+        d= max(c[0],n-c[-1]-1)
+        for i in range(len(c)-1):
+            d=max((c[i+1]-c[i])//2,d)
+        return(d)
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nm = input().split()
+
+    n = int(nm[0])
+
+    m = int(nm[1])
+
+    c = list(map(int, input().rstrip().split()))
+
+    result = flatlandSpaceStations(n, c)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
