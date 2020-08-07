@@ -1,0 +1,43 @@
+#Competitive Super Reduced Strings 
+#!/bin/python3
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the superReducedString function below.
+def superReducedString(s):
+    i=0
+    s=list(s)
+    while i<(len(s)):
+        
+        if i!=(len(s)-1) and (s[i]==s[i+1]):
+            s.pop(i + 1)
+            s.pop(i)  
+
+        elif i!=0 and (s[i]==s[i-1]):
+            s.pop(i)
+            s.pop(i-1)
+            if i!=0:
+                i=i-1
+        else:
+            i+=1
+           
+    if len(s)<=0:
+        return "Empty String"
+
+    return("".join(s))
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = superReducedString(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
